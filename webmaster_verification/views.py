@@ -1,3 +1,6 @@
+import logging
+logger = logging.getLogger(__name__)
+
 from django.http import Http404
 from django.views.generic import TemplateView
 
@@ -14,6 +17,9 @@ class VerificationView(TemplateView):
         try:
             context['%s_verification' % self.provider] = settings.WEBMASTER_VERIFICATION[self.provider]
         except KeyError:
+            raise Http404
+        except AttributeError:
+            logger.info("WEBMASTER_VERIFICATION not defined in settings")
             raise Http404
         return context
 
