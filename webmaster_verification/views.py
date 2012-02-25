@@ -25,10 +25,10 @@ class VerificationView(TemplateView):
 
 
 class GoogleVerificationView(VerificationView):
-    template_name = 'google_verify_template.html'
+    template_name = 'webmaster_verification/google_verify_template.html'
     provider = 'google'
 
 
 class BingVerificationView(VerificationView):
-    template_name = 'bing_verify_template.xml'
+    template_name = 'webmaster_verification/bing_verify_template.xml'
     provider = 'bing'
