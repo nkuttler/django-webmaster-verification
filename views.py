@@ -1,21 +1,28 @@
+from django.http import Http404
 from django.views.generic import TemplateView
 
 import settings
 
 
-class GoogleVerifyView(TemplateView):
+class VerificationView(TemplateView):
+    """
+    This simply adds the verification key to the view context and makes sure
+    we return a 404 if the key wasn't set for the provider
+    """
+    def get_context_data(self, **kwargs):
+        context = super(VerificationView, self).get_context_data(**kwargs)
+        try:
+            context['%s_verification' % self.provider] = settings.VERIFICATION[self.provider]
+        except KeyError:
+            raise Http404
+        return context
+
+
+class GoogleVerificationView(VerificationView):
     template_name = 'google_verify_template.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(GoogleVerifyView, self).get_context_data(**kwargs)
-        context['google_verification'] = settings.VERIFICATION['google']
-        return context
+    provider = 'google'
 
 
-class BingVerifyView(TemplateView):
+class BingVerificationView(VerificationView):
     template_name = 'bing_verify_template.xml'
-
-    def get_context_data(self, **kwargs):
-        context = super(BingVerifyView, self).get_context_data(**kwargs)
-        context['bing_verification'] = settings.VERIFICATION['bing']
-        return context
+    provider = 'bing'
