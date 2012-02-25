@@ -1,4 +1,4 @@
 *pyc
 build
 dist
-webmaster_verification.egg-info
+*.egg-info
