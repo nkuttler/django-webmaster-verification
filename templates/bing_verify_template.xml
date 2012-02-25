@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<users>
+	<user>{{ bing_verification }}</user>
+</users>

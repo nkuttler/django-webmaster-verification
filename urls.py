@@ -1,10 +1,17 @@
 from django.conf.urls.defaults import patterns, include, url
-from django.views.generic import TemplateView
+
+from views import GoogleVerifyView
+from views import BingVerifyView
 
 urlpatterns = patterns('',
     url(
-        r'^google833377565a0bbef2.html$',
-        TemplateView.as_view(template_name = 'google833377565a0bbef2.html'),
+        r'^google[0-9a-f]{16}.html$',
+        GoogleVerifyView.as_view(),
         name = 'google_verify'
+    ),
+    url(
+        r'^BingSiteAuth.xml$',
+        BingVerifyView.as_view(),
+        name = 'bing_verify'
     ),
 )
