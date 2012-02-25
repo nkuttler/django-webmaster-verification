@@ -2,7 +2,7 @@ from distutils.core import setup
 from setuptools import setup, find_packages
 
 setup(
-    name = "django-webmaster-verification",
+    name = "webmaster_verification",
     version = "0.1",
     author = "nkuttler",
     author_email = "python@nicolaskuttler.com",
