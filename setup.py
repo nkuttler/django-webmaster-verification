@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup(
     name = "django-webmaster-verification",
     version = "0.1",
-    author = "nkuttler",
+    author = "Nicolas Kuttler",
     author_email = "pypi@nicolaskuttler.com",
     description = "Webmaster tools verification for Django",
     long_description = open("README.rst").read(),
