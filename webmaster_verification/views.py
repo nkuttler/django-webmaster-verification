@@ -12,7 +12,7 @@ class VerificationView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(VerificationView, self).get_context_data(**kwargs)
         try:
-            context['%s_verification' % self.provider] = settings.VERIFICATION[self.provider]
+            context['%s_verification' % self.provider] = settings.WEBMASTER_VERIFICATION[self.provider]
         except KeyError:
             raise Http404
         return context
