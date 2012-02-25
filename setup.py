@@ -1,5 +1,7 @@
-from distutils.core import setup
-from setuptools import setup, find_packages
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 setup(
     name = "django-webmaster-verification",
@@ -10,7 +12,7 @@ setup(
     long_description = open("README.rst").read(),
     license = "BSD",
     url = "http://github.com/nkuttler/django-webmaster-verification",
-    packages = find_packages(),
+    packages = ['webmaster_verification'],
     classifiers = [
         "Development Status :: 4 - Beta",
         "Environment :: Web Environment",
@@ -20,4 +22,5 @@ setup(
         "Programming Language :: Python",
         "Framework :: Django",
     ],
+    zip_safe = True,
 )
