@@ -2,6 +2,7 @@ from django.conf.urls.defaults import patterns, include, url
 
 from views import GoogleVerificationView
 from views import BingVerificationView
+from views import MajesticVerificationView
 
 urlpatterns = patterns('',
     url(
@@ -13,5 +14,10 @@ urlpatterns = patterns('',
         r'^BingSiteAuth.xml$',
         BingVerificationView.as_view(),
         name = 'bing_verify'
+    ),
+    url(
+        r'^MJ12_[0-9A-F]{32}.txt$',
+        MajesticVerificationView.as_view(),
+        name = 'majestic_verify'
     ),
 )

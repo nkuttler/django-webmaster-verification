@@ -32,3 +32,8 @@ class GoogleVerificationView(VerificationView):
 class BingVerificationView(VerificationView):
     template_name = 'webmaster_verification/bing_verify_template.xml'
     provider = 'bing'
+
+
+class MajesticVerificationView(VerificationView):
+    template_name = 'webmaster_verification/majestic_verify_template.txt'
+    provider = 'majestic'
