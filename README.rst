@@ -4,7 +4,7 @@ README
 
 This application allows various webmaster tools to verify that a django site is managed by you.
 
-The only supported method of verification is accessing xml file on your server. Only one verification code is supported at the moment.
+The only supported method of verification is by accessing a file on your server. Only one verification code per service provider is supported at the moment.
 
 - `Google Webmaster Tools <https://www.google.com/webmasters/tools/home>`_
 - `Bing Webmaster Tools <https://ssl.bing.com/webmaster/Home/>`_
