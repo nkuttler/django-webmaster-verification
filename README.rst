@@ -20,9 +20,9 @@ Get ``django-webmaster-verification`` into your python path::
 Add ``webmaster_verification`` to your INSTALLED_APPS in settings.py::
 
     INSTALLED_APPS = (
-        ...
+        ...,
         'webmaster_verification',
-        ...
+        ...,
     )
     
 Add ``wembaster_verification`` to your root urlconf (urls.py)::
