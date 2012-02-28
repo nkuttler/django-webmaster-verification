@@ -24,16 +24,39 @@ class VerificationView(TemplateView):
         return context
 
 
+class VerificationTextView(VerificationView):
+    """
+    Return proper content type
+    """
+    def render_to_response(self, context, **kwargs):
+        return super(VerificationTextView, self).render_to_response(
+            context,
+            content_type='text/plain',
+            **kwargs
+        )
+
+
+class VerificationXMLView(VerificationView):
+    """
+    Return proper content type
+    """
+    def render_to_response(self, context, **kwargs):
+        return super(VerificationXMLView, self).render_to_response(
+            context,
+            content_type='text/xml',
+            **kwargs
+        )
+
 class GoogleVerificationView(VerificationView):
     template_name = 'webmaster_verification/google_verify_template.html'
     provider = 'google'
 
 
-class BingVerificationView(VerificationView):
+class BingVerificationView(VerificationXMLView):
     template_name = 'webmaster_verification/bing_verify_template.xml'
     provider = 'bing'
 
 
-class MajesticVerificationView(VerificationView):
+class MajesticVerificationView(VerificationTextView):
     template_name = 'webmaster_verification/majestic_verify_template.txt'
     provider = 'majestic'
