@@ -2,3 +2,4 @@
 build
 dist
 *.egg-info
+django-webmaster-verification-test-project/db.sqlite
