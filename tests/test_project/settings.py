@@ -8,11 +8,10 @@ DATABASES = {
     }
 }
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'test_project.urls'
 
 INSTALLED_APPS = (
     'webmaster_verification',
-    'test_app',
 )
 
 WEBMASTER_VERIFICATION = {
