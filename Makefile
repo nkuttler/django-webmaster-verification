@@ -1,5 +1,5 @@
 test:
-	make -C django-webmaster-verification-test-project test
+	make -C tests test
 
 install:
 	python setup.py install
