@@ -42,10 +42,3 @@ class WebmasterVerificationTest(TestCase):
             'text/plain',
             "Got %s content type for robots.txt" % r['Content-Type']
         )
-
-    #def test_robotstxt_has_text_plain_content_type(self):
-    #    url = '/robots.txt'
-    #    r = self.client.get(url)
-        #url = (
-        #    '/BingSiteAuth.xml',
-        #)
