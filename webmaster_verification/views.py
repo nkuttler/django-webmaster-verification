@@ -4,7 +4,7 @@ logger = logging.getLogger(__name__)
 from django.http import Http404
 from django.views.generic import TemplateView
 
-import settings
+from django.conf import settings
 
 
 class VerificationView(TemplateView):
