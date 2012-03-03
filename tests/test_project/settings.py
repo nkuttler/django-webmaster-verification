@@ -17,5 +17,5 @@ INSTALLED_APPS = (
 WEBMASTER_VERIFICATION = {
     'google': 'ffffffffffffffff',
     'bing': 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
-    'majestic': 'ffffffffffffffffffffffffffffffff',
+    'majestic': 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
 }
