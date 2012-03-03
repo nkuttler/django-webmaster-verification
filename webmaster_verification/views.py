@@ -1,16 +1,29 @@
 import logging
 logger = logging.getLogger(__name__)
 
+from django.conf import settings
 from django.http import Http404
 from django.views.generic import TemplateView
 
-from django.conf import settings
+
+class VerifyCodeMixin(object):
+    """
+    Make sure the accessed code is also configured. We don't want to add
+    billions of files to the site.
+    """
+    def get(self, request, *args, **kwargs):
+        try:
+            if self.kwargs['code'] != settings.WEBMASTER_VERIFICATION[self.provider]:
+                raise Http404
+        except KeyError:
+            pass
+        return super(VerifyCodeMixin, self).get(request, *args, **kwargs)
 
 
 class VerificationView(TemplateView):
     """
     This simply adds the verification key to the view context and makes sure
-    we return a 404 if the key wasn't set for the provider
+    we return a 404 if no key was set for the provider.
     """
     def get_context_data(self, **kwargs):
         context = super(VerificationView, self).get_context_data(**kwargs)
@@ -47,7 +60,8 @@ class VerificationXMLView(VerificationView):
             **kwargs
         )
 
-class GoogleVerificationView(VerificationView):
+
+class GoogleVerificationView(VerifyCodeMixin, VerificationView):
     template_name = 'webmaster_verification/google_verify_template.html'
     provider = 'google'
 
@@ -57,6 +71,6 @@ class BingVerificationView(VerificationXMLView):
     provider = 'bing'
 
 
-class MajesticVerificationView(VerificationTextView):
+class MajesticVerificationView(VerifyCodeMixin, VerificationTextView):
     template_name = 'webmaster_verification/majestic_verify_template.txt'
     provider = 'majestic'

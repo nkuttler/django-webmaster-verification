@@ -1,3 +1,7 @@
+import os
+
+TESTS_DIR = os.getcwd()
+
 DEBUG = True
 TEMPLATE_DEBUG = True
 
@@ -12,6 +16,10 @@ ROOT_URLCONF = 'test_project.urls'
 
 INSTALLED_APPS = (
     'webmaster_verification',
+)
+
+TEMPLATE_DIRS = (
+    TESTS_DIR + '/test_project/templates/',
 )
 
 WEBMASTER_VERIFICATION = {

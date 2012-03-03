@@ -23,6 +23,21 @@ class WebmasterVerificationTest(TestCase):
             'Verification code not found in response body',
         )
 
+    def test_google_file_404s(self):
+        bad_codes = (
+            '',
+            '012345678',
+            '0123456789abcdef',
+        )
+        for code in bad_codes:
+            url = self._get_google_url(code)
+            r = self.client.get(url)
+            self.assertEqual(
+                r.status_code,
+                404,
+                "Could access %s for inexistent code, got %d" % (url, r.status_code)
+            )
+
     def _get_google_url(self, code):
         return '/google%s.html' % code
 
@@ -59,6 +74,21 @@ class WebmasterVerificationTest(TestCase):
             'text/plain',
             "Got %s content type for robots.txt" % r['Content-Type']
         )
+
+    def test_mj_file_404s(self):
+        bad_codes = (
+            '',
+            '012345678',
+            '0123456789ABCDEF0123456789ABCDEF',
+        )
+        for code in bad_codes:
+            url = self._get_mj_url(code)
+            r = self.client.get(url)
+            self.assertEqual(
+                r.status_code,
+                404,
+                "Could access %s for inexistent code, got %d" % (url, r.status_code)
+            )
 
     def _get_mj_url(self, code):
         return '/MJ12_%s.txt' % code
