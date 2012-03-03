@@ -13,7 +13,8 @@ class VerifyCodeMixin(object):
     """
     def get(self, request, *args, **kwargs):
         try:
-            if self.kwargs['code'] != settings.WEBMASTER_VERIFICATION[self.provider]:
+            if self.kwargs['code'] not in settings.WEBMASTER_VERIFICATION[self.provider] \
+                and self.kwargs['code'] != settings.WEBMASTER_VERIFICATION[self.provider]:
                 raise Http404
         except KeyError:
             pass

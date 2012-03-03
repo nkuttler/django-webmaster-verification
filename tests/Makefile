@@ -3,4 +3,5 @@ db.sqlite:
 	
 .PHONY: test
 test: db.sqlite
-	PYTHONPATH=.. python manage.py test
+	python manage.py test --settings=test_project.settings_multicode
+	python manage.py test

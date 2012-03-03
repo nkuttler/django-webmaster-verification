@@ -9,7 +9,14 @@ class WebmasterVerificationTest(TestCase):
         self.client = Client()
 
     def test_google_file_access_and_content(self):
-        code = settings.WEBMASTER_VERIFICATION['google']
+        codes = settings.WEBMASTER_VERIFICATION['google']
+        if type(codes) == tuple:
+            for code in codes:
+                self._test_google_file_access_and_content(code)
+        else:
+            self._test_google_file_access_and_content(codes)
+
+    def _test_google_file_access_and_content(self, code):
         url = self._get_google_url(code)
         r = self.client.get(url)
         self.assertEqual(
@@ -62,7 +69,15 @@ class WebmasterVerificationTest(TestCase):
         )
 
     def test_mj_file_access(self):
-        url = self._get_mj_url(settings.WEBMASTER_VERIFICATION['majestic'])
+        codes = settings.WEBMASTER_VERIFICATION['majestic']
+        if type(codes) == tuple:
+            for code in codes:
+                self._test_mj_file_access(code)
+        else:
+            self._test_mj_file_access(codes)
+
+    def _test_mj_file_access(self, code):
+        url = self._get_mj_url(code)
         r = self.client.get(url)
         self.assertEqual(
             r.status_code,
