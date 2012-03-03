@@ -53,7 +53,7 @@ class WebmasterVerificationTest(TestCase):
         self.assertEqual(
             r['Content-Type'],
             'text/xml',
-            "Got %s content type for robots.txt" % r['Content-Type']
+            "Got %s content type for xml file" % r['Content-Type']
         )
         self.assertRegexpMatches(
             r.content,
@@ -72,7 +72,7 @@ class WebmasterVerificationTest(TestCase):
         self.assertEqual(
             r['Content-Type'],
             'text/plain',
-            "Got %s content type for robots.txt" % r['Content-Type']
+            "Got %s content type for text file" % r['Content-Type']
         )
 
     def test_mj_file_404s(self):
