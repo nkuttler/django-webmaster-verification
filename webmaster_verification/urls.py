@@ -4,6 +4,7 @@ from views import GoogleVerificationView
 from views import BingVerificationView
 from views import MajesticVerificationView
 
+
 urlpatterns = patterns('',
     url(
         r'^google(?P<code>[0-9a-f]{16}).html$',
