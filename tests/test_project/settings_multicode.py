@@ -1,27 +1,16 @@
-import os
+import sys
 
-TESTS_DIR = os.getcwd()
+from django.utils.importlib import import_module
 
-DEBUG = True
-TEMPLATE_DEBUG = True
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite',
-    }
-}
+# Import default settings
+settings_default = import_module('test_project.settings')
+settings_multicode = sys.modules[__name__]
+for key in dir(settings_default):
+    if not key.startswith('__'):
+        setattr(settings_multicode, key, getattr(settings_default, key))
 
-ROOT_URLCONF = 'test_project.urls'
-
-INSTALLED_APPS = (
-    'webmaster_verification',
-)
-
-TEMPLATE_DIRS = (
-    TESTS_DIR + '/test_project/templates/',
-)
-
+# And override what we want
 WEBMASTER_VERIFICATION = {
     'google': (
         'ffffffffffffffff',
