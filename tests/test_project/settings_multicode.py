@@ -23,7 +23,13 @@ TEMPLATE_DIRS = (
 )
 
 WEBMASTER_VERIFICATION = {
-    'google': 'ffffffffffffffff',
+    'google': (
+        'ffffffffffffffff',
+        'aaaaaaaaaaaaaaaa',
+    ),
     'bing': 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
-    'majestic': 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
+    'majestic': (
+        'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
+        'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+    ),
 }
