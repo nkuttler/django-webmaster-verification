@@ -6,6 +6,8 @@ This application allows various webmaster tools to verify that a django site is 
 
 The only supported method of verification is by accessing a file on your server. Only one verification code per service provider is supported at the moment.
 
+Supported services:
+
 - `Google Webmaster Tools <https://www.google.com/webmasters/tools/home>`_
 - `Bing Webmaster Tools <https://ssl.bing.com/webmaster/Home/>`_
 - `Majestic SEO <https://www.majesticseo.com>`_
