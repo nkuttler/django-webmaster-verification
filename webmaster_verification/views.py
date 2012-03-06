@@ -21,6 +21,30 @@ class VerifyCodeMixin(object):
         return super(VerifyCodeMixin, self).get(request, *args, **kwargs)
 
 
+class MimeTextMixin(object):
+    """
+    Return text content type
+    """
+    def render_to_response(self, context, **kwargs):
+        return super(MimeTextMixin, self).render_to_response(
+            context,
+            content_type='text/plain',
+            **kwargs
+        )
+
+
+class MimeXMLMixin(object):
+    """
+    Return xml content type
+    """
+    def render_to_response(self, context, **kwargs):
+        return super(MimeXMLMixin, self).render_to_response(
+            context,
+            content_type='text/xml',
+            **kwargs
+        )
+
+
 class VerificationView(TemplateView):
     """
     This simply adds the verification key to the view context and makes sure
@@ -38,40 +62,16 @@ class VerificationView(TemplateView):
         return context
 
 
-class VerificationTextView(VerificationView):
-    """
-    Return proper content type
-    """
-    def render_to_response(self, context, **kwargs):
-        return super(VerificationTextView, self).render_to_response(
-            context,
-            content_type='text/plain',
-            **kwargs
-        )
-
-
-class VerificationXMLView(VerificationView):
-    """
-    Return proper content type
-    """
-    def render_to_response(self, context, **kwargs):
-        return super(VerificationXMLView, self).render_to_response(
-            context,
-            content_type='text/xml',
-            **kwargs
-        )
-
-
 class GoogleVerificationView(VerifyCodeMixin, VerificationView):
     template_name = 'webmaster_verification/google_verify_template.html'
     provider = 'google'
 
 
-class BingVerificationView(VerificationXMLView):
+class BingVerificationView(MimeXMLMixin, VerificationView):
     template_name = 'webmaster_verification/bing_verify_template.xml'
     provider = 'bing'
 
 
-class MajesticVerificationView(VerifyCodeMixin, VerificationTextView):
+class MajesticVerificationView(MimeTextMixin, VerifyCodeMixin, VerificationView):
     template_name = 'webmaster_verification/majestic_verify_template.txt'
     provider = 'majestic'
