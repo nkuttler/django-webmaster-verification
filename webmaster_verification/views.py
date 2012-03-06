@@ -17,7 +17,7 @@ class VerifyCodeMixin(object):
                 and self.kwargs['code'] != settings.WEBMASTER_VERIFICATION[self.provider]:
                 raise Http404
         except KeyError:
-            pass
+            raise Http404
         return super(VerifyCodeMixin, self).get(request, *args, **kwargs)
 
 
