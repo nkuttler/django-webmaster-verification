@@ -6,10 +6,10 @@ from django.http import Http404
 from django.views.generic import TemplateView
 
 
-class VerifyCodeMixin(object):
+class FileAccessMixin(object):
     """
-    Make sure the accessed code is also configured. We don't want to add
-    billions of files to the site.
+    Make sure the code for the accessed file is configured. We don't want to add
+    billions of files to sites. This is necessary for foo-<code> like filenames.
     """
     def get(self, request, *args, **kwargs):
         try:
@@ -18,7 +18,7 @@ class VerifyCodeMixin(object):
                 raise Http404
         except KeyError:
             raise Http404
-        return super(VerifyCodeMixin, self).get(request, *args, **kwargs)
+        return super(FileAccessMixin, self).get(request, *args, **kwargs)
 
 
 class MimeTextMixin(object):
@@ -47,8 +47,8 @@ class MimeXMLMixin(object):
 
 class VerificationView(TemplateView):
     """
-    This simply adds the verification key to the view context and makes sure
-    we return a 404 if no key was set for the provider.
+    This simply adds the verification key to the template context and makes
+    sure we return a 404 if no key was set for the provider.
     """
     def get_context_data(self, **kwargs):
         context = super(VerificationView, self).get_context_data(**kwargs)
@@ -62,7 +62,7 @@ class VerificationView(TemplateView):
         return context
 
 
-class GoogleVerificationView(VerifyCodeMixin, VerificationView):
+class GoogleVerificationView(FileAccessMixin, VerificationView):
     template_name = 'webmaster_verification/google_verify_template.html'
     provider = 'google'
 
@@ -72,6 +72,6 @@ class BingVerificationView(MimeXMLMixin, VerificationView):
     provider = 'bing'
 
 
-class MajesticVerificationView(MimeTextMixin, VerifyCodeMixin, VerificationView):
+class MajesticVerificationView(MimeTextMixin, FileAccessMixin, VerificationView):
     template_name = 'webmaster_verification/majestic_verify_template.txt'
     provider = 'majestic'
