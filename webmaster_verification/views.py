@@ -47,8 +47,8 @@ class MimeXMLMixin(object):
 
 class VerificationView(TemplateView):
     """
-    This simply adds the verification key to the template context and makes
-    sure we return a 404 if no key was set for the provider.
+    This adds the verification key to the template context and makes sure we
+    return a 404 if no key was set for the provider.
     """
     def get_context_data(self, **kwargs):
         context = super(VerificationView, self).get_context_data(**kwargs)

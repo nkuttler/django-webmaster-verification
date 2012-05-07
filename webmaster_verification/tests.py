@@ -17,6 +17,10 @@ class WebmasterVerificationTest(TestCase):
             self._test_google_file_access_and_content(codes)
 
     def _test_google_file_access_and_content(self, code):
+        """
+        Test if the google verification file for a specific code exists and
+        if it's content is correct.
+        """
         url = self._get_google_url(code)
         r = self.client.get(url)
         self.assertEqual(
