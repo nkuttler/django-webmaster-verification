@@ -53,7 +53,13 @@ class VerificationView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(VerificationView, self).get_context_data(**kwargs)
         try:
-            context['%s_verification' % self.provider] = settings.WEBMASTER_VERIFICATION[self.provider]
+            codes = settings.WEBMASTER_VERIFICATION[self.provider]
+            if 'code' in self.kwargs:
+                if self.kwargs['code'] in codes or self.kwargs['code'] == codes:
+                    code = self.kwargs['code']
+            else:
+                code = codes
+            context['%s_verification' % self.provider] = code
         except KeyError:
             raise Http404
         except AttributeError:

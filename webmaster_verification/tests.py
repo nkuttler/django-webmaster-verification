@@ -26,7 +26,7 @@ class WebmasterVerificationTest(TestCase):
         )
         self.assertRegexpMatches(
             r.content,
-            '.*%s.*' % code,
+            '.*google%s\.html.*' % code,
             'Verification code not found in response body',
         )
 
