@@ -1,6 +1,6 @@
-===========
+======
 README
-===========
+======
 
 This application allows various webmaster tools to verify that a django site is managed by you.
 
@@ -18,7 +18,7 @@ Usage
 Get ``django-webmaster-verification`` into your python path::
 
     pip install django-webmaster-verification
-    
+
 Add ``webmaster_verification`` to your INSTALLED_APPS in settings.py::
 
     INSTALLED_APPS = (
@@ -26,13 +26,13 @@ Add ``webmaster_verification`` to your INSTALLED_APPS in settings.py::
         'webmaster_verification',
         ...,
     )
-    
+
 Add ``wembaster_verification`` to your root urlconf (urls.py)::
 
     urlpatterns = patterns('',
         ...,
         url(r'', include('webmaster_verification.urls')),
-        ...,        
+        ...,
     )
 
 Add settings just as::
@@ -58,3 +58,11 @@ Multiple codes for google an majestic are supported as well::
     }
 
 As bing always accesses the same verification file I'm not sure if it's possible to support more than one code for it.
+
+Changelog
+=========
+
+0.1.7 (2012-05-07)
+------------------
+
+Bugfix for multiple verification codes for one provider.
