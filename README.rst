@@ -57,7 +57,7 @@ Multiple codes for google an majestic are supported as well::
         ),
     }
 
-As bing always accesses the same verification file I'm not sure if it's possible to support more than one code for it.
+As bing always accesses the same verification file I'm not sure if it's possible to support more than one code for it. Please let me know if yes and how, as I don't really use their tools.
 
 Changelog
 =========
