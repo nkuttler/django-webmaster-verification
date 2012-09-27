@@ -43,6 +43,9 @@ Add settings just as::
         'majestic': '<majestic verification code>',
     }
 
+The codes are alphanumeric and don't include suffixes like 'html', e.g.
+``847e1f379a99c28a`` for google, not ``847e1f379a99c28a.html``.
+
 Multiple codes for google an majestic are supported as well::
 
     WEBMASTER_VERIFICATION = {
