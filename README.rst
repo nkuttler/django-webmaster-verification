@@ -10,6 +10,7 @@ Supported services:
 
 - `Google Webmaster Tools <https://www.google.com/webmasters/tools/home>`_
 - `Bing Webmaster Tools <https://ssl.bing.com/webmaster/Home/>`_
+- `Yandex Webmaster Tools <http://webmaster.yandex.com/>`_
 - `Majestic SEO <https://www.majesticseo.com>`_
 
 Usage
@@ -41,6 +42,7 @@ Add settings just as::
         'bing': '<bing verification code>',
         'google': '<google verification code>',
         'majestic': '<majestic verification code>',
+        'yandex': '<yandex verification code>',
     }
 
 The codes are alphanumeric and don't include suffixes like 'html', e.g.
@@ -58,14 +60,26 @@ Multiple codes for google an majestic are supported as well::
                 '<majestic verification code 1>',
                 '<majestic verification code 2>',
         ),
+        'yandex': (
+                '<yandex verification code 1>',
+                '<yandex verification code 2>',
+        ),
     }
 
 As bing always accesses the same verification file I'm not sure if it's possible to support more than one code for it. Please let me know if yes and how, as I don't really use their tools.
 
+For Yandex only the .txt file method is supported, but adding support for .html
+should be trivial.
+
 Changelog
 =========
+
+0.1.8 (2012-12-19)
+------------------
+
+- Yandex Webmaster Tools support added.
 
 0.1.7 (2012-05-07)
 ------------------
 
-Bugfix for multiple verification codes for one provider.
+- Bugfix for multiple verification codes for one provider.

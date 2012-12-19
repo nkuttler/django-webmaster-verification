@@ -81,3 +81,8 @@ class BingVerificationView(MimeXMLMixin, VerificationView):
 class MajesticVerificationView(MimeTextMixin, FileAccessMixin, VerificationView):
     template_name = 'webmaster_verification/majestic_verify_template.txt'
     provider = 'majestic'
+
+
+class YandexVerificationView(MimeTextMixin, FileAccessMixin, VerificationView):
+    template_name = 'webmaster_verification/yandex_verify_template.txt'
+    provider = 'yandex'

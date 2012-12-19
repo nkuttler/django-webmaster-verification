@@ -26,4 +26,5 @@ WEBMASTER_VERIFICATION = {
     'google': 'ffffffffffffffff',
     'bing': 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
     'majestic': 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
+    'yandex': 'f0f0f0f0f0f0f0f0',
 }
