@@ -5,7 +5,7 @@ except ImportError:
 
 setup(
     name = "django-webmaster-verification",
-    version = "0.1.9",
+    version = "0.1.10",
     author = "Nicolas Kuttler",
     author_email = "pypi@kuttler.eu",
     description = "Webmaster tools verification for Django",

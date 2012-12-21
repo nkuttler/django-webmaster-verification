@@ -74,6 +74,11 @@ should be trivial.
 Changelog
 =========
 
+0.1.10 (2012-12-21)
+-------------------
+
+- Fix test errors when running from a real project
+
 0.1.9 (2012-12-19)
 ------------------
 
