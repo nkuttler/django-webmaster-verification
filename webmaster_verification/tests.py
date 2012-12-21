@@ -9,12 +9,13 @@ class WebmasterVerificationTest(TestCase):
         self.client = Client()
 
     def test_google_file_access_and_content(self):
-        codes = settings.WEBMASTER_VERIFICATION['google']
-        if type(codes) == tuple:
-            for code in codes:
-                self._test_google_file_access_and_content(code)
-        else:
-            self._test_google_file_access_and_content(codes)
+        if 'google' in settings.WEBMASTER_VERIFICATION:
+            codes = settings.WEBMASTER_VERIFICATION['google']
+            if type(codes) == tuple:
+                for code in codes:
+                    self._test_google_file_access_and_content(code)
+            else:
+                self._test_google_file_access_and_content(codes)
 
     def _test_google_file_access_and_content(self, code):
         """
@@ -53,32 +54,34 @@ class WebmasterVerificationTest(TestCase):
         return '/google%s.html' % code
 
     def test_bing_file_access_and_content(self):
-        code = settings.WEBMASTER_VERIFICATION['bing']
-        url = '/BingSiteAuth.xml'
-        r = self.client.get(url)
-        self.assertEqual(
-            r.status_code,
-            200,
-            "Couldn't access %s, got %d" % (url, r.status_code)
-        )
-        self.assertEqual(
-            r['Content-Type'],
-            'text/xml',
-            "Got %s content type for xml file" % r['Content-Type']
-        )
-        self.assertRegexpMatches(
-            r.content,
-            '.*%s.*' % code,
-            'Verification code not found in response body',
-        )
+        if 'bing' in settings.WEBMASTER_VERIFICATION:
+            code = settings.WEBMASTER_VERIFICATION['bing']
+            url = '/BingSiteAuth.xml'
+            r = self.client.get(url)
+            self.assertEqual(
+                r.status_code,
+                200,
+                "Couldn't access %s, got %d" % (url, r.status_code)
+            )
+            self.assertEqual(
+                r['Content-Type'],
+                'text/xml',
+                "Got %s content type for xml file" % r['Content-Type']
+            )
+            self.assertRegexpMatches(
+                r.content,
+                '.*%s.*' % code,
+                'Verification code not found in response body',
+            )
 
     def test_mj_file_access(self):
-        codes = settings.WEBMASTER_VERIFICATION['majestic']
-        if type(codes) == tuple:
-            for code in codes:
-                self._test_mj_file_access(code)
-        else:
-            self._test_mj_file_access(codes)
+        if 'majestic' in settings.WEBMASTER_VERIFICATION:
+            codes = settings.WEBMASTER_VERIFICATION['majestic']
+            if type(codes) == tuple:
+                for code in codes:
+                    self._test_mj_file_access(code)
+            else:
+                self._test_mj_file_access(codes)
 
     def _test_mj_file_access(self, code):
         url = self._get_mj_url(code)
@@ -114,12 +117,13 @@ class WebmasterVerificationTest(TestCase):
 
     # TODO look into refactoring this
     def test_yandex_file_acces(self):
-        codes = settings.WEBMASTER_VERIFICATION['yandex']
-        if type(codes) == tuple:
-            for code in codes:
-                self._test_yandex_file_access(code)
-        else:
-            self._test_yandex_file_access(codes)
+        if 'yandex' in settings.WEBMASTER_VERIFICATION:
+            codes = settings.WEBMASTER_VERIFICATION['yandex']
+            if type(codes) == tuple:
+                for code in codes:
+                    self._test_yandex_file_access(code)
+            else:
+                self._test_yandex_file_access(codes)
 
     # TODO look into refactoring this
     def _test_yandex_file_access(self, code):
