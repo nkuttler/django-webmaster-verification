@@ -48,7 +48,7 @@ Add settings just as::
 The codes are alphanumeric and don't include suffixes like 'html', e.g.
 ``847e1f379a99c28a`` for google, not ``847e1f379a99c28a.html``.
 
-Multiple codes for google an majestic are supported as well::
+Multiple codes for google, yandex and majestic are supported as well::
 
     WEBMASTER_VERIFICATION = {
         'bing': '<bing verification code>',
