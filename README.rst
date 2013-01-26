@@ -28,7 +28,7 @@ Add ``webmaster_verification`` to your INSTALLED_APPS in settings.py::
         ...,
     )
 
-Add ``wembaster_verification`` to your root urlconf (urls.py)::
+Add ``webmaster_verification`` to your root urlconf (urls.py)::
 
     urlpatterns = patterns('',
         ...,
