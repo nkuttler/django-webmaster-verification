@@ -15,7 +15,8 @@ Supported services:
 - `Yandex Webmaster Tools <http://webmaster.yandex.com/>`_
 - `Majestic SEO <https://www.majesticseo.com>`_
 
-Continuous integration provided by `Travis <https://travis-ci.org/nkuttler/django-webmaster-verification>`_.
+.. image:: https://api.travis-ci.org/nkuttler/django-webmaster-verification.png
+  :target: https://travis-ci.org/nkuttler/django-webmaster-verification
 
 Usage
 =====
