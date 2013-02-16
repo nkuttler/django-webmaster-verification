@@ -66,10 +66,15 @@ Multiple codes for google, yandex and majestic are supported as well::
         ),
     }
 
-As bing always accesses the same verification file I'm not sure if it's possible to support more than one code for it. Please let me know if yes and how, as I don't really use their tools.
+Notes
+-----
 
-For Yandex only the .txt file method is supported, but adding support for .html
-should be trivial.
+As **Bing** always accesses the same verification file I'm not sure if it's
+possible to support more than one code for it. Please let me know if yes, and
+how, as I don't really use their tools.
+
+For **Yandex** only the `.txt` file method is supported, but adding support for
+`.html` should be trivial.
 
 Changelog
 =========
