@@ -14,7 +14,7 @@ Supported services:
 - `Majestic SEO <https://www.majesticseo.com>`_
 
 Usage
------
+=====
 
 Get ``django-webmaster-verification`` into your python path::
 
@@ -78,6 +78,11 @@ For **Yandex** only the `.txt` file method is supported, but adding support for
 
 Changelog
 =========
+
+0.1.11 (2013-02-16)
+-------------------
+
+- Integrate travis
 
 0.1.10 (2012-12-21)
 -------------------
