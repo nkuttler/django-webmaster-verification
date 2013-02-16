@@ -2,9 +2,11 @@
 README
 ======
 
-This application allows various webmaster tools to verify that a django site is managed by you.
+This application allows various webmaster tools to verify that a django site is
+managed by you.
 
-The only supported method of verification is by accessing a file on your server.
+The only supported method of verification is by accessing a file on your
+server.
 
 Supported services:
 
@@ -79,27 +81,22 @@ For **Yandex** only the `.txt` file method is supported, but adding support for
 Changelog
 =========
 
-0.1.11 (2013-02-16)
--------------------
-
-- Integrate travis
+0.2 (2013-02-16)
+----------------
+- Python 3.2 support
+- Integrate testing with travis
 
 0.1.10 (2012-12-21)
 -------------------
-
 - Fix test errors when running from a real project
 
 0.1.9 (2012-12-19)
 ------------------
-
 - Pypi updates
-
 0.1.8 (2012-12-19)
 ------------------
-
 - Yandex Webmaster Tools support added.
 
 0.1.7 (2012-05-07)
 ------------------
-
 - Bugfix for multiple verification codes for one provider.

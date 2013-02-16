@@ -30,7 +30,7 @@ class WebmasterVerificationTest(TestCase):
             "Couldn't access %s, got %d" % (url, r.status_code)
         )
         self.assertRegexpMatches(
-            r.content,
+            str(r.content),
             '.*google%s\.html.*' % code,
             'Verification code not found in response body',
         )
@@ -69,7 +69,7 @@ class WebmasterVerificationTest(TestCase):
                 "Got %s content type for xml file" % r['Content-Type']
             )
             self.assertRegexpMatches(
-                r.content,
+                str(r.content),
                 '.*%s.*' % code,
                 'Verification code not found in response body',
             )
