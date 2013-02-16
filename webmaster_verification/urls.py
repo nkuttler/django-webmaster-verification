@@ -1,9 +1,9 @@
 from django.conf.urls.defaults import patterns, include, url
 
-from views import GoogleVerificationView
-from views import BingVerificationView
-from views import MajesticVerificationView
-from views import YandexVerificationView
+from .views import GoogleVerificationView
+from .views import BingVerificationView
+from .views import MajesticVerificationView
+from .views import YandexVerificationView
 
 
 urlpatterns = patterns('',
