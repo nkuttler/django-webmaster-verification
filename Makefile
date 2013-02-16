@@ -15,3 +15,7 @@ upload:
 
 clean:
 	rm -rf dist build *.egg-info django-webmaster-verification-*
+	rm -rf tests/htmlcov tests/.coverage
+
+coverage:
+	make -C tests htmlcov
