@@ -1,5 +1,6 @@
 test:
-	make -C tests test
+	python quicktest.py webmaster_verification
+	python quicktest.py webmaster_verification --multicode
 
 install:
 	python setup.py install
@@ -15,7 +16,12 @@ upload:
 
 clean:
 	rm -rf dist build *.egg-info django-webmaster-verification-*
-	rm -rf tests/htmlcov tests/.coverage
+	rm -rf .coverage coverage
 
-coverage:
-	make -C tests htmlcov
+.PHONY: .coverage
+.coverage:
+	coverage run --source=webmaster_verification quicktest.py webmaster_verification
+	coverage run --source=webmaster_verification quicktest.py webmaster_verification --multicode
+
+coverage: .coverage
+	coverage html -d coverage
