@@ -21,8 +21,8 @@ matrix:
     - python: 2.5
       env: DJANGO_VERSION=git+git://github.com/django/django.git@f23d3ce8d47cc3ec58cb7fb1b32d3d3237c025f5
 install:
-  - pip install --use-mirrors $DJANGO_VERSION
-  - python setup.py install
+  - pip install -q --use-mirrors $DJANGO_VERSION
+  - python setup.py install -q
 script: make test
 notifications:
   email:
