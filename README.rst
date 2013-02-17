@@ -84,6 +84,10 @@ For **Yandex** only the `.txt` file method is supported, but adding support for
 Changelog
 =========
 
+0.2.1 ()
+--------
+- Refactor the test project to use the modern structure
+
 0.2 (2013-02-16)
 ----------------
 - Python 3.2 support
