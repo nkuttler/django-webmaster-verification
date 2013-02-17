@@ -1,6 +1,6 @@
 import os
 
-TESTS_DIR = os.getcwd()
+TESTS_DIR = os.path.dirname(os.getcwd())
 
 DEBUG = True
 TEMPLATE_DEBUG = True
