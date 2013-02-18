@@ -86,7 +86,7 @@ Changelog
 
 0.2.1 ()
 --------
-- Refactor the test project to use the modern structure
+- Refactor the test project to use a different structure
 
 0.2 (2013-02-16)
 ----------------
