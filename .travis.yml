@@ -8,7 +8,7 @@ python:
 # Django releases
 env:
   - DJANGO_VERSION=Django==1.3.5
-  - DJANGO_VERSION=Django==1.4.3
+  - DJANGO_VERSION=Django==1.4.5
   # 1.5 release candidate
   - DJANGO_VERSION=git+git://github.com/django/django.git@18d920ea4839fb54f9d2a5dcb555b6a5666ee469
 # Exclude some Django releases depending on Python version
@@ -17,7 +17,7 @@ matrix:
     - python: 3.2
       env: DJANGO_VERSION=Django==1.3.5
     - python: 3.2
-      env: DJANGO_VERSION=Django==1.4.3
+      env: DJANGO_VERSION=Django==1.4.5
     - python: 2.5
       env: DJANGO_VERSION=git+git://github.com/django/django.git@18d920ea4839fb54f9d2a5dcb555b6a5666ee469
 install:
