@@ -104,7 +104,6 @@ if __name__ == '__main__':
         description="Run Django tests on the provided applications."
     )
     parser.add_argument('apps', nargs='+', type=str)
-    parser.add_argument('--multicode', action="store_true",
-                        help='run the multicode tests')
+    parser.add_argument('--multicode', help='run the multicode tests')
     options = parser.parse_args()
     QuickDjangoTest(options)
