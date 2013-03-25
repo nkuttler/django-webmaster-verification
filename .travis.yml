@@ -15,6 +15,8 @@ env:
 # Exclude some Django releases depending on Python version
 matrix:
   exclude:
+    - python: 3.3
+      env: DJANGO_VERSION=Django==1.4.5
     - python: 3.2
       env: DJANGO_VERSION=Django==1.4.5
     - python: 2.5
