@@ -14,6 +14,7 @@ Supported services:
 - `Bing Webmaster Tools <https://ssl.bing.com/webmaster/Home/>`_
 - `Yandex Webmaster Tools <http://webmaster.yandex.com/>`_
 - `Majestic SEO <https://www.majesticseo.com>`_
+- `Alexa <http://www.alexa.com>`_
 
 .. image:: https://api.travis-ci.org/nkuttler/django-webmaster-verification.png
   :target: https://travis-ci.org/nkuttler/django-webmaster-verification
@@ -48,12 +49,13 @@ Add settings just as::
         'google': '<google verification code>',
         'majestic': '<majestic verification code>',
         'yandex': '<yandex verification code>',
+        'alexa': '<alexa verification code>',
     }
 
 The codes are alphanumeric and don't include suffixes like 'html', e.g.
 ``847e1f379a99c28a`` for google, not ``847e1f379a99c28a.html``.
 
-Multiple codes for google, yandex and majestic are supported as well::
+Multiple codes are supported as well, except for bing::
 
     WEBMASTER_VERIFICATION = {
         'bing': '<bing verification code>',
@@ -69,6 +71,10 @@ Multiple codes for google, yandex and majestic are supported as well::
                 '<yandex verification code 1>',
                 '<yandex verification code 2>',
         ),
+        'alexa': (
+                '<alexa verification code 1>',
+                '<alexa verification code 2>',
+        ),
     }
 
 Notes
@@ -79,13 +85,18 @@ possible to support more than one code for it. Please let me know if yes, and
 how, as I don't really use their tools.
 
 For **Yandex** only the `.txt` file method is supported, but adding support for
-`.html` should be trivial.
+`.html` should be trivial if you need it.
+
+The **Alexa** codes I saw all had a length of 27 characters, so that's what this
+app assumes is used. Please let me know if your codes differ and I need to
+modify the app.
 
 Changelog
 =========
 
-0.2.1 ()
---------
+0.2.1 (2013-03-25)
+------------------
+- Add alexa support
 - Refactor the test project to use a different structure
 
 0.2 (2013-02-16)
@@ -100,6 +111,7 @@ Changelog
 0.1.9 (2012-12-19)
 ------------------
 - Pypi updates
+
 0.1.8 (2012-12-19)
 ------------------
 - Yandex Webmaster Tools support added.
