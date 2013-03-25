@@ -79,6 +79,10 @@ class QuickDjangoTest(object):
                     'f0f0f0f0f0f0f0f0',
                     '1919191919191919',
                 ),
+                'alexa': (
+                    '1234567890abcdefABCDEF12345',
+                    '12345abcdef1234567890ABCDEF',
+                ),
             }
         else:
             conf = {
@@ -86,6 +90,7 @@ class QuickDjangoTest(object):
                 'google': 'ffffffffffffffff',
                 'majestic': 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
                 'yandex': 'f0f0f0f0f0f0f0f0',
+                'alexa': '12345abcdef1234567890ABCDEF',
             }
         return conf
 

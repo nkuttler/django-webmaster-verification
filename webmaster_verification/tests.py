@@ -159,3 +159,43 @@ class WebmasterVerificationTest(TestCase):
     # TODO look into refactoring this
     def _get_yandex_url(self, code):
         return '/yandex_%s.txt' % code
+
+    # TODO look into refactoring this
+    def test_alexa_file_acces(self):
+        if 'alexa' in settings.WEBMASTER_VERIFICATION:
+            codes = settings.WEBMASTER_VERIFICATION['alexa']
+            if type(codes) == tuple:
+                for code in codes:
+                    self._test_alexa_file_access(code)
+            else:
+                self._test_alexa_file_access(codes)
+
+    # TODO look into refactoring this
+    def _test_alexa_file_access(self, code):
+        url = self._get_alexa_url(code)
+        r = self.client.get(url)
+        self.assertEqual(
+            r.status_code,
+            200,
+            "Couldn't access %s, got %d" % (url, r.status_code)
+        )
+
+    # TODO look into refactoring this
+    def test_alexa_file_404s(self):
+        bad_codes = (
+            '',
+            '012345678',
+            '0123456789ABCDEF0123456789ABCDEF',
+        )
+        for code in bad_codes:
+            url = self._get_alexa_url(code)
+            r = self.client.get(url)
+            self.assertEqual(
+                r.status_code,
+                404,
+                "Could access %s for inexistent code, got %d" % (url, r.status_code)
+            )
+
+    # TODO look into refactoring this
+    def _get_alexa_url(self, code):
+        return '/%s.html' % code

@@ -4,6 +4,7 @@ from .views import GoogleVerificationView
 from .views import BingVerificationView
 from .views import MajesticVerificationView
 from .views import YandexVerificationView
+from .views import AlexaVerificationView
 
 
 urlpatterns = patterns('',
@@ -26,5 +27,10 @@ urlpatterns = patterns('',
         r'^yandex_(?P<code>[0-9a-f]{16}).txt$',
         YandexVerificationView.as_view(),
         name = 'majestic_verify'
+    ),
+    url(
+        r'^(?P<code>[0-9a-zA-Z]{27}).html$',
+        AlexaVerificationView.as_view(),
+        name = 'alexa_verify'
     ),
 )
