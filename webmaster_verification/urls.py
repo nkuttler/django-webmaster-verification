@@ -9,27 +9,27 @@ from .views import AlexaVerificationView
 
 urlpatterns = patterns('',
     url(
-        r'^google(?P<code>[0-9a-f]{16}).html$',
+        r'^google(?P<code>[0-9a-f]{16})\.html$',
         GoogleVerificationView.as_view(),
         name = 'google_verify'
     ),
     url(
-        r'^BingSiteAuth.xml$',
+        r'^BingSiteAuth\.xml$',
         BingVerificationView.as_view(),
         name = 'bing_verify'
     ),
     url(
-        r'^MJ12_(?P<code>[0-9A-F]{32}).txt$',
+        r'^MJ12_(?P<code>[0-9A-F]{32})\.txt$',
         MajesticVerificationView.as_view(),
         name = 'majestic_verify'
     ),
     url(
-        r'^yandex_(?P<code>[0-9a-f]{16}).txt$',
+        r'^yandex_(?P<code>[0-9a-f]{16})\.txt$',
         YandexVerificationView.as_view(),
         name = 'majestic_verify'
     ),
     url(
-        r'^(?P<code>[0-9a-zA-Z]{27}).html$',
+        r'^(?P<code>[0-9a-zA-Z]{27})\.html$',
         AlexaVerificationView.as_view(),
         name = 'alexa_verify'
     ),
