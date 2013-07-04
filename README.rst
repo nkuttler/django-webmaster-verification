@@ -94,6 +94,10 @@ modify the app.
 Changelog
 =========
 
+0.2.2 (2013-xx-xx)
+------------------
+- Django 1.5.1, 1.6 support
+
 0.2.1 (2013-03-25)
 ------------------
 - Add alexa support
