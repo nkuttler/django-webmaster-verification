@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "django-webmaster-verification",
-    version = "0.2.1",
+    version = "0.2.2",
     packages = find_packages(),
 
     author = "Nicolas Kuttler",
@@ -21,7 +21,6 @@ setup(
         "Programming Language :: Python",
         "Framework :: Django",
         "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.5",
         "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",

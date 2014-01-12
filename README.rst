@@ -94,9 +94,10 @@ modify the app.
 Changelog
 =========
 
-0.2.2 (2013-xx-xx)
+0.2.2 (2014-01-12)
 ------------------
-- Django 1.5.1, 1.6 support
+- Django 1.6 support
+- Removed Python 2.5 testing
 
 0.2.1 (2013-03-25)
 ------------------
