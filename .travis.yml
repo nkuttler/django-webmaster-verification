@@ -1,7 +1,6 @@
 language: python
 # Python releases to test
 python:
-  - 2.5
   - 2.6
   - 2.7
   - 3.2
@@ -19,10 +18,6 @@ matrix:
       env: DJANGO_VERSION=Django==1.4.10
     - python: 3.2
       env: DJANGO_VERSION=Django==1.4.10
-    - python: 2.5
-      env: DJANGO_VERSION=Django==1.5.5
-    - python: 2.5
-      env: DJANGO_VERSION=Django==1.6.1
       #env: DJANGO_VERSION=git+git://github.com/django/django.git@70f2d9aaffcdd255b1fde6c83b7fe584c4ee3d45
 install:
   - if [[ $TRAVIS_PYTHON_VERSION < '2.7' ]]; then pip install -q --use-mirrors argparse; fi
