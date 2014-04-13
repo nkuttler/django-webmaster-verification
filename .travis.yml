@@ -9,8 +9,8 @@ python:
 env:
   - DJANGO_VERSION=Django==1.4.10
   - DJANGO_VERSION=Django==1.5.5
-  - DJANGO_VERSION=Django==1.6.1
-  #- DJANGO_VERSION=git+git://github.com/django/django.git@70f2d9aaffcdd255b1fde6c83b7fe584c4ee3d45
+  - DJANGO_VERSION=Django==1.6.2
+  - DJANGO_VERSION=git+git://github.com/django/django.git@dda6224459ed843dfd63e85729613fcc60ce925f
 # Exclude some Django releases depending on Python version
 matrix:
   exclude:
@@ -18,9 +18,10 @@ matrix:
       env: DJANGO_VERSION=Django==1.4.10
     - python: 3.2
       env: DJANGO_VERSION=Django==1.4.10
-      #env: DJANGO_VERSION=git+git://github.com/django/django.git@70f2d9aaffcdd255b1fde6c83b7fe584c4ee3d45
+    - python: 2.6
+      env: DJANGO_VERSION=git+git://github.com/django/django.git@dda6224459ed843dfd63e85729613fcc60ce925f
 install:
-  - if [[ $TRAVIS_PYTHON_VERSION < '2.7' ]]; then pip install -q --use-mirrors argparse; fi
+  - if [[ $TRAVIS_PYTHON_VERSION < '2.7' ]]; then pip install -q --use-mirrors argparse importlib; fi
   - pip install -q --use-mirrors $DJANGO_VERSION
   - python setup.py install -q
 script: make test
