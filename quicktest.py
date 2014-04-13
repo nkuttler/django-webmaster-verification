@@ -60,11 +60,9 @@ class QuickDjangoTest(object):
         )
 
         # Django 1.7
-        try:
-            import django
+        import django
+        if hasattr(django, 'setup'):
             django.setup()
-        except AttributeError:
-            pass
 
         from django.test.simple import DjangoTestSuiteRunner
         failures = DjangoTestSuiteRunner().run_tests(self.apps, verbosity=1)
