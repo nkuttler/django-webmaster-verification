@@ -21,7 +21,7 @@ matrix:
     - python: 2.6
       env: DJANGO_VERSION=git+git://github.com/django/django.git@dda6224459ed843dfd63e85729613fcc60ce925f
 install:
-  - if [[ $TRAVIS_PYTHON_VERSION < '2.7' ]]; then pip install -q --use-mirrors argparse importlib; fi
+  - if [[ $TRAVIS_PYTHON_VERSION < '2.7' ]]; then pip install -q --use-mirrors argparse; fi
   - pip install -q --use-mirrors $DJANGO_VERSION
   - python setup.py install -q
 script: make test
