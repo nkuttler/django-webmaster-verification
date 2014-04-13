@@ -94,6 +94,10 @@ modify the app.
 Changelog
 =========
 
+0.2.3 (2014-04-13)
+------------------
+- Django 1.7 (beta1) support
+
 0.2.2 (2014-01-12)
 ------------------
 - Django 1.6 support
