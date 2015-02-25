@@ -5,21 +5,25 @@ python:
   - 2.7
   - 3.2
   - 3.3
+  - 3.4
 # Django releases
 env:
-  - DJANGO_VERSION=Django==1.4.10
-  - DJANGO_VERSION=Django==1.5.5
-  - DJANGO_VERSION=Django==1.6.2
-  - DJANGO_VERSION=git+git://github.com/django/django.git@dda6224459ed843dfd63e85729613fcc60ce925f
+  - DJANGO_VERSION=Django==1.4.19
+  - DJANGO_VERSION=Django==1.6.10
+  - DJANGO_VERSION=Django==1.7.5
+  - DJANGO_VERSION=git+git://github.com/django/django.git@3fff408a27d06c3d21a1c184cd6bd47f0785e279
 # Exclude some Django releases depending on Python version
 matrix:
   exclude:
+    - python: 3.4
+      env: DJANGO_VERSION=Django==1.4.19
     - python: 3.3
-      env: DJANGO_VERSION=Django==1.4.10
+      env: DJANGO_VERSION=Django==1.4.19
     - python: 3.2
-      env: DJANGO_VERSION=Django==1.4.10
+      env: DJANGO_VERSION=Django==1.4.19
     - python: 2.6
-      env: DJANGO_VERSION=git+git://github.com/django/django.git@dda6224459ed843dfd63e85729613fcc60ce925f
+      env: DJANGO_VERSION=git+git://github.com/django/django.git@3fff408a27d06c3d21a1c184cd6bd47f0785e279
+      env: DJANGO_VERSION=1.7.5
 install:
   - if [[ $TRAVIS_PYTHON_VERSION < '2.7' ]]; then pip install -q --use-mirrors argparse; fi
   - pip install -q --use-mirrors $DJANGO_VERSION
