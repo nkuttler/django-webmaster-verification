@@ -25,7 +25,7 @@ matrix:
       env: DJANGO_VERSION=git+git://github.com/django/django.git@3fff408a27d06c3d21a1c184cd6bd47f0785e279
       env: DJANGO_VERSION=1.7.5
 install:
-  - if [[ $TRAVIS_PYTHON_VERSION < '2.7' ]]; then pip install -q --use-mirrors argparse; fi
+  - if [[ $TRAVIS_PYTHON_VERSION < '2.7' ]]; then pip install -q --use-mirrors argparse importlib; fi
   - pip install -q --use-mirrors $DJANGO_VERSION
   - python setup.py install -q
 script: make test
