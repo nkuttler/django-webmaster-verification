@@ -64,10 +64,16 @@ class QuickDjangoTest(object):
         if hasattr(django, 'setup'):
             django.setup()
 
-        from django.test.simple import DjangoTestSuiteRunner
-        failures = DjangoTestSuiteRunner().run_tests(self.apps, verbosity=1)
-        if failures:
-            sys.exit(failures)
+        try:
+            from django.test.simple import DjangoTestSuiteRunner
+            failures = DjangoTestSuiteRunner().run_tests(self.apps,
+                    verbosity=1)
+            if failures:
+                sys.exit(failures)
+        except ImportError:
+            # Django 1.8
+            from django.test.runner import DiscoverRunner
+            DiscoverRunner().run_tests(self.apps, verbosity=1)
 
     def _get_wv_config(self, key='default'):
         if self.multicode:
