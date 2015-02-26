@@ -4,7 +4,6 @@ python:
   - 2.6
   - 2.7
   - 3.2
-  - 3.3
   - 3.4
 # Django releases
 env:
@@ -17,14 +16,12 @@ matrix:
   exclude:
     - python: 3.4
       env: DJANGO_VERSION=Django==1.4.19
-    - python: 3.3
-      env: DJANGO_VERSION=Django==1.4.19
     - python: 3.2
       env: DJANGO_VERSION=Django==1.4.19
     - python: 2.6
-      env:
-        - DJANGO_VERSION=git+git://github.com/django/django.git@3fff408a27d06c3d21a1c184cd6bd47f0785e279
-        - DJANGO_VERSION=Django==1.7.5
+      env: DJANGO_VERSION=git+git://github.com/django/django.git@3fff408a27d06c3d21a1c184cd6bd47f0785e279
+    - python: 2.6
+      env: DJANGO_VERSION=Django==1.7.5
 install:
   - if [[ $TRAVIS_PYTHON_VERSION < '2.7' ]]; then pip install -q --use-mirrors argparse importlib; fi
   - pip install -q --use-mirrors $DJANGO_VERSION
