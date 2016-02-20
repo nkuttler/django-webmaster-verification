@@ -97,6 +97,10 @@ modify the app.
 Changelog
 =========
 
+0.3.0 (2016-02-20)
+------------------
+- Python 2.7 and Django 1.8 are required
+
 0.2.4 (2015-02-26)
 ------------------
 - Add Django 1.8 (beta1) support and drop 1.5 tests
