@@ -94,6 +94,10 @@ modify the app.
 Changelog
 =========
 
+0.3.1 ()
+--------
+- Use docker-based travis testing
+
 0.3.0 (2016-02-20)
 ------------------
 - Python 2.7 and Django 1.8 are required
