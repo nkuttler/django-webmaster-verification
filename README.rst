@@ -2,7 +2,7 @@
 README
 ======
 
-This application allows various webmaster tools to verify that a django site is
+This application allows various webmaster tools to verify that a Django site is
 managed by you.
 
 The only supported method of verification is by accessing a file on your
@@ -36,11 +36,11 @@ Add ``webmaster_verification`` to your INSTALLED_APPS in settings.py::
 
 Add ``webmaster_verification`` to your root urlconf (urls.py)::
 
-    urlpatterns = patterns('',
+    urlpatterns = [
         ...,
         url(r'', include('webmaster_verification.urls')),
         ...,
-    )
+    ]
 
 Add settings just as::
 
@@ -94,9 +94,12 @@ modify the app.
 Changelog
 =========
 
-0.3.1 ()
---------
+0.4.0 (2019-01-26)
+------------------
 - Use docker-based travis testing
+- Test against Django >=1.11
+- Removed tests for Python 3.4, add 3.6
+- I only ran the tests, I don't think I use it on any prod site right now
 
 0.3.0 (2016-02-20)
 ------------------
