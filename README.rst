@@ -94,12 +94,15 @@ modify the app.
 Changelog
 =========
 
-0.4.0 (2019-01-26)
+0.4.0 (2020-08-23)
 ------------------
 - Use docker-based travis testing
-- Test against Django >=1.11
-- Removed tests for Python 3.4, add 3.6
+- Test against Django >=3.0
+- Removed tests for Python 2, 3.4, and add 3.6 to 3.8
 - I only ran the tests, I don't think I use it on any prod site right now
+- If any provider doesn't work please let me know and I'll probably remove it, I
+  don't have the time to work on this code. Or send patches.
+- Apologies for deleting issues, I deleted the old repo in between
 
 0.3.0 (2016-02-20)
 ------------------
