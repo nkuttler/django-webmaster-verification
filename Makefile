@@ -25,3 +25,33 @@ clean:
 
 coverage: .coverage
 	coverage html -d coverage
+
+# Pre-commit things
+pre-commit: blackcheck flake8 docformatter
+style: black flake8 reorder-imports docformatter
+
+docformattercheck:
+	docformatter -r --make-summary-multi-line --pre-summary-newline webmaster_verification/ --check
+
+docformatter:
+	docformatter -r --make-summary-multi-line --pre-summary-newline webmaster_verification/ -i
+
+.PHONY: flake8
+flake8:
+	flake8
+
+.PHONY: pylint
+pylint:
+	pylint --exit-zero webmaster_verification > reports/pylint.json
+	pylint-json2html -f jsonextended -o reports/pylint.html < reports/pylint.json
+
+.PHONY: reorder-imports
+reorder-imports:
+	PYTHONPATH="" find webmaster_verification/ -type f -name "*.py" -exec reorder-python-imports --py36-plus --application-directories=.:webmaster_verification {} \;
+
+.PHONY: black blackcheck
+black:
+	black --line-length 89 webmaster_verification/
+
+blackcheck:
+	black --check --line-length 89 webmaster_verification/

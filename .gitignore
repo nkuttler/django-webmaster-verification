@@ -1,8 +1,9 @@
-*pyc
-*swp
-build
-dist
 *.egg-info
 *.sqlite
+*pyc
+*swp
 .coverage
+build
 coverage
+dist
+flake8

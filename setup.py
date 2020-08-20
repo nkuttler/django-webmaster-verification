@@ -5,7 +5,6 @@ setup(
     name="django-webmaster-verification",
     version="0.4.0",
     packages=find_packages(),
-
     author="Nicolas Kuttler",
     author_email="pypi@kuttler.eu",
     description="Webmaster tools verification for Django",
@@ -21,12 +20,11 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Framework :: Django",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
     ],
-    install_requires=[
-        "Django >= 1.8",
-    ],
+    install_requires=["Django >= 3.0", ],
     zip_safe=True,
 )
