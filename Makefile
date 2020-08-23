@@ -5,14 +5,9 @@ test:
 install:
 	python setup.py install
 
-build:
-	python setup.py build
-
-sdist:
-	python setup.py sdist
-
 upload:
-	python setup.py sdist upload
+	python setup.py sdist bdist_wheel
+	twine upload dist/*
 
 clean:
 	rm -rf dist build *.egg-info django-webmaster-verification-*
