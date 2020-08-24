@@ -94,6 +94,10 @@ modify the app.
 Changelog
 =========
 
+0.4.2 (2020-08-24)
+------------------
+- Repackage
+
 0.4.1 (2020-08-24)
 ------------------
 - Fix issue with new verification yandex file
