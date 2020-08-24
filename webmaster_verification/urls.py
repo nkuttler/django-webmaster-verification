@@ -1,10 +1,10 @@
 from django.conf.urls import url
 
-from .views import AlexaVerificationView
-from .views import BingVerificationView
-from .views import GoogleVerificationView
-from .views import MajesticVerificationView
-from .views import YandexVerificationView
+from webmaster_verification.views import AlexaVerificationView
+from webmaster_verification.views import BingVerificationView
+from webmaster_verification.views import GoogleVerificationView
+from webmaster_verification.views import MajesticVerificationView
+from webmaster_verification.views import YandexVerificationView
 
 
 urlpatterns = [
