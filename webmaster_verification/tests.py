@@ -3,10 +3,12 @@ from django.test import TestCase
 from django.test.client import Client
 
 
-class WebmasterVerificationTest(TestCase):
+class WebmasterVerificationTest:
     def setUp(self):
         self.client = Client()
 
+
+class GoogleTest(WebmasterVerificationTest, TestCase):
     def test_google_file_access_and_content(self):
         if "google" in settings.WEBMASTER_VERIFICATION:
             codes = settings.WEBMASTER_VERIFICATION["google"]
@@ -50,6 +52,8 @@ class WebmasterVerificationTest(TestCase):
     def _get_google_url(self, code):
         return "/google%s.html" % code
 
+
+class BingTest(WebmasterVerificationTest, TestCase):
     def test_bing_file_access_and_content(self):
         if "bing" in settings.WEBMASTER_VERIFICATION:
             code = settings.WEBMASTER_VERIFICATION["bing"]
@@ -69,6 +73,8 @@ class WebmasterVerificationTest(TestCase):
                 "Verification code not found in response body",
             )
 
+
+class MajesticTest(WebmasterVerificationTest, TestCase):
     def test_mj_file_access(self):
         if "majestic" in settings.WEBMASTER_VERIFICATION:
             codes = settings.WEBMASTER_VERIFICATION["majestic"]
@@ -108,16 +114,8 @@ class WebmasterVerificationTest(TestCase):
     def _get_mj_url(self, code):
         return "/MJ12_%s.txt" % code
 
-    # TODO look into refactoring this
-    def test_yandex_file_acces(self):
-        if "yandex" in settings.WEBMASTER_VERIFICATION:
-            codes = settings.WEBMASTER_VERIFICATION["yandex"]
-            if type(codes) == tuple:
-                for code in codes:
-                    self._test_yandex_file_access(code)
-            else:
-                self._test_yandex_file_access(codes)
 
+class YandexTest(WebmasterVerificationTest, TestCase):
     # TODO look into refactoring this
     def _test_yandex_file_access(self, code):
         url = self._get_yandex_url(code)
@@ -130,6 +128,20 @@ class WebmasterVerificationTest(TestCase):
             "text/plain",
             "Got %s content type for text file" % r["Content-Type"],
         )
+
+    # TODO look into refactoring this
+    def _get_yandex_url(self, code):
+        return "/yandex_%s.html" % code
+
+    # TODO look into refactoring this
+    def test_yandex_file_acces(self):
+        if "yandex" in settings.WEBMASTER_VERIFICATION:
+            codes = settings.WEBMASTER_VERIFICATION["yandex"]
+            if type(codes) == tuple:
+                for code in codes:
+                    self._test_yandex_file_access(code)
+            else:
+                self._test_yandex_file_access(codes)
 
     # TODO look into refactoring this
     def test_yandex_file_404s(self):
@@ -147,9 +159,19 @@ class WebmasterVerificationTest(TestCase):
                 "Could access %s for inexistent code, got %d" % (url, r.status_code),
             )
 
+
+class AlexaTest(WebmasterVerificationTest, TestCase):
     # TODO look into refactoring this
-    def _get_yandex_url(self, code):
-        return "/yandex_%s.txt" % code
+    def _test_alexa_file_access(self, code):
+        url = self._get_alexa_url(code)
+        r = self.client.get(url)
+        self.assertEqual(
+            r.status_code, 200, "Couldn't access %s, got %d" % (url, r.status_code)
+        )
+
+    # TODO look into refactoring this
+    def _get_alexa_url(self, code):
+        return "/%s.html" % code
 
     # TODO look into refactoring this
     def test_alexa_file_acces(self):
@@ -160,14 +182,6 @@ class WebmasterVerificationTest(TestCase):
                     self._test_alexa_file_access(code)
             else:
                 self._test_alexa_file_access(codes)
-
-    # TODO look into refactoring this
-    def _test_alexa_file_access(self, code):
-        url = self._get_alexa_url(code)
-        r = self.client.get(url)
-        self.assertEqual(
-            r.status_code, 200, "Couldn't access %s, got %d" % (url, r.status_code)
-        )
 
     # TODO look into refactoring this
     def test_alexa_file_404s(self):
@@ -184,7 +198,3 @@ class WebmasterVerificationTest(TestCase):
                 404,
                 "Could access %s for inexistent code, got %d" % (url, r.status_code),
             )
-
-    # TODO look into refactoring this
-    def _get_alexa_url(self, code):
-        return "/%s.html" % code

@@ -89,7 +89,7 @@ class MajesticVerificationView(MimeTextMixin, FileAccessMixin, VerificationView)
 
 
 class YandexVerificationView(MimeTextMixin, FileAccessMixin, VerificationView):
-    template_name = "webmaster_verification/yandex_verify_template.txt"
+    template_name = "webmaster_verification/yandex_verify_template.html"
     provider = "yandex"
 
 

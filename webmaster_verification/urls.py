@@ -20,7 +20,7 @@ urlpatterns = [
         name="majestic_verify",
     ),
     url(
-        r"^yandex_(?P<code>[0-9a-f]{16})\.txt$",
+        r"^yandex_(?P<code>[0-9a-f]{16})\.html$",
         YandexVerificationView.as_view(),
         name="majestic_verify",
     ),
