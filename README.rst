@@ -94,6 +94,10 @@ modify the app.
 Changelog
 =========
 
+0.4.1 (2020-08-24)
+------------------
+- Fix issue with new verification yandex file
+
 0.4.0 (2020-08-23)
 ------------------
 - Use docker-based travis testing
