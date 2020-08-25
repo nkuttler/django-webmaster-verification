@@ -84,9 +84,6 @@ As **Bing** always accesses the same verification file I'm not sure if it's
 possible to support more than one code for it. Please let me know if yes, and
 how, as I don't really use their tools.
 
-For **Yandex** only the `.txt` file method is supported, but adding support for
-`.html` should be trivial if you need it.
-
 The **Alexa** codes I saw all had a length of 27 characters, so that's what this
 app assumes is used. Please let me know if your codes differ and I need to
 modify the app.
