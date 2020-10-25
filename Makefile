@@ -23,7 +23,7 @@ coverage: .coverage
 
 # Pre-commit things
 pre-commit: blackcheck flake8 docformatter
-style: black flake8 reorder-imports docformatter
+style: black flake8 reorder-imports docformatter djcodemod
 
 docformattercheck:
 	docformatter -r --make-summary-multi-line --pre-summary-newline webmaster_verification/ --check
@@ -50,3 +50,7 @@ black:
 
 blackcheck:
 	black --check --line-length 89 webmaster_verification/
+
+.PHONY: djcodemod
+djcodemod:
+	djcodemod run --removed-in=4.0 src/

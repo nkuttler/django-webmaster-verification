@@ -1,6 +1,7 @@
-from django.conf.urls import include, url
+from django.conf.urls import include
+from django.urls import re_path
 
 
 urlpatterns = [
-    url(r"", include("webmaster_verification.urls")),
+    re_path(r"", include("webmaster_verification.urls")),
 ]
