@@ -1,0 +1,53 @@
+trigger:
+  batch: true
+  paths:
+    exclude:
+    - LICENSE
+    - Makefile
+    - MANIFEST.in
+    - README.rst
+
+jobs:
+- job: Test
+  pool:
+    vmImage: ubuntu-latest
+  strategy:
+    matrix:
+      Python36dj32:
+        python.version: '3.6'
+        django.release: 'Django<3.3'
+      Python37dj32:
+        python.version: '3.7'
+        django.release: 'Django<3.3'
+      Python38dj32:
+        python.version: '3.8'
+        django.release: 'Django<3.3'
+      Python39dj32:
+        python.version: '3.9'
+        django.release: 'Django<3.3'
+      Python310dj32:
+        python.version: '3.10'
+        django.release: 'Django<3.3'
+      Python38dj40:
+        python.version: '3.8'
+        django.release: 'Django<4.1'
+      Python39dj40:
+        python.version: '3.9'
+        django.release: 'Django<4.1'
+      Python310dj40:
+        python.version: '3.10'
+        django.release: 'Django<4.1'
+
+  steps:
+  - task: UsePythonVersion@0
+    displayName: Use Python $(python.version)
+    inputs:
+      versionSpec: $(python.version)
+  - script: pip install "$(django.release)"
+    displayName: Install requirements
+  - script: python setup.py install
+    displayName: setup.py install
+  - script: python quicktest.py webmaster_verification
+    displayName: Run tests
+  - script: python quicktest.py webmaster_verification --multicode
+    displayName: Run multicode tests
