@@ -1,0 +1,10 @@
+black
+flake8-html
+flake8<4  # not sure why
+
+# Pinned because python 3.6
+coverage<6
+importlib-metadata<4.9
+platformdirs<2.4.1
+tomli<1.3
+zipp<3.7

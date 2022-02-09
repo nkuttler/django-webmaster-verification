@@ -54,3 +54,6 @@ blackcheck:
 .PHONY: djcodemod
 djcodemod:
 	djcodemod run --removed-in=4.0 webmaster_verification/
+
+requirements.txt: requirements.in
+	pip-compile --no-emit-index-url --no-emit-trusted-host --no-annotate requirements.in

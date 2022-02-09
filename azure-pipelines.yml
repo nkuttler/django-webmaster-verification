@@ -43,9 +43,20 @@ jobs:
     displayName: Use Python $(python.version)
     inputs:
       versionSpec: $(python.version)
-  - script: pip install "$(django.release)"
+  - script: |
+      python -m pip install "$(django.release)"
+      python -m pip install -r requirements.txt
     displayName: Install requirements
-  - script: python setup.py install
-    displayName: setup.py install
-  - script: python quicktest.py webmaster_verification
+  - script: |
+      black --check --line-length 89 webmaster_verification/
+      mkdir flake8
+      flake8
+    displayName: Lint
+  - script: |
+      python setup.py install
+      coverage run --source=webmaster_verification quicktest.py webmaster_verification
     displayName: Run tests
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: flake8/
+      artifactName: Flake8HtmlReport
