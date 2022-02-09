@@ -93,6 +93,7 @@ Changelog
 
 0.4.3 (2022-02-09)
 ------------------
+- Django 4.0 compatibility
 - Move tests to azure pipelines for now
 
 0.4.2 (2020-08-24)
