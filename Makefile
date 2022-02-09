@@ -53,4 +53,4 @@ blackcheck:
 
 .PHONY: djcodemod
 djcodemod:
-	djcodemod run --removed-in=4.0 src/
+	djcodemod run --removed-in=4.0 webmaster_verification/
