@@ -16,8 +16,8 @@ Supported services:
 - `Majestic SEO <https://www.majesticseo.com>`_
 - `Alexa <http://www.alexa.com>`_
 
-.. image:: https://api.travis-ci.org/nkuttler/django-webmaster-verification.png
-  :target: https://travis-ci.org/nkuttler/django-webmaster-verification
+.. image:: https://dev.azure.com/nkuttler/django-webmaster-verification/_apis/build/status/nkuttler.django-webmaster-verification?branchName=master
+  :target: https://dev.azure.com/nkuttler/django-webmaster-verification/_build?definitionId=1
 
 Usage
 =====
@@ -90,6 +90,10 @@ modify the app.
 
 Changelog
 =========
+
+0.4.3 (2022-02-09)
+------------------
+- Move tests to azure pipelines for now
 
 0.4.2 (2020-08-24)
 ------------------
