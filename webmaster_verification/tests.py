@@ -1,14 +1,44 @@
 from django.conf import settings
+from django.test import override_settings
 from django.test import TestCase
 from django.test.client import Client
 
 
-class WebmasterVerificationTest:
+conf_multi = {
+    "bing": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+    "google": (
+        "ffffffffffffffff",
+        "aaaaaaaaaaaaaaaa",
+    ),
+    "majestic": (
+        "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+        "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    ),
+    "yandex": (
+        "f0f0f0f0f0f0f0f0",
+        "1919191919191919",
+    ),
+    "alexa": (
+        "1234567890abcdefABCDEF12345",
+        "12345abcdef1234567890ABCDEF",
+    ),
+}
+
+conf = {
+    "bing": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+    "google": "ffffffffffffffff",
+    "majestic": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+    "yandex": "f0f0f0f0f0f0f0f0",
+    "alexa": "12345abcdef1234567890ABCDEF",
+}
+
+
+class WebmasterVerificationMixin:
     def setUp(self):
         self.client = Client()
 
 
-class GoogleTest(WebmasterVerificationTest, TestCase):
+class GoogleMixin:
     def test_google_file_access_and_content(self):
         if "google" in settings.WEBMASTER_VERIFICATION:
             codes = settings.WEBMASTER_VERIFICATION["google"]
@@ -53,7 +83,7 @@ class GoogleTest(WebmasterVerificationTest, TestCase):
         return "/google%s.html" % code
 
 
-class BingTest(WebmasterVerificationTest, TestCase):
+class BingMixin:
     def test_bing_file_access_and_content(self):
         if "bing" in settings.WEBMASTER_VERIFICATION:
             code = settings.WEBMASTER_VERIFICATION["bing"]
@@ -74,7 +104,7 @@ class BingTest(WebmasterVerificationTest, TestCase):
             )
 
 
-class MajesticTest(WebmasterVerificationTest, TestCase):
+class MajesticMixin:
     def test_mj_file_access(self):
         if "majestic" in settings.WEBMASTER_VERIFICATION:
             codes = settings.WEBMASTER_VERIFICATION["majestic"]
@@ -115,7 +145,7 @@ class MajesticTest(WebmasterVerificationTest, TestCase):
         return "/MJ12_%s.txt" % code
 
 
-class YandexTest(WebmasterVerificationTest, TestCase):
+class YandexMixin:
     # TODO look into refactoring this
     def _test_yandex_file_access(self, code):
         url = self._get_yandex_url(code)
@@ -160,7 +190,7 @@ class YandexTest(WebmasterVerificationTest, TestCase):
             )
 
 
-class AlexaTest(WebmasterVerificationTest, TestCase):
+class AlexaMixin:
     # TODO look into refactoring this
     def _test_alexa_file_access(self, code):
         url = self._get_alexa_url(code)
@@ -198,3 +228,53 @@ class AlexaTest(WebmasterVerificationTest, TestCase):
                 404,
                 "Could access %s for inexistent code, got %d" % (url, r.status_code),
             )
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf)
+class AlexaTest(WebmasterVerificationMixin, AlexaMixin, TestCase):
+    pass
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf)
+class BingTest(WebmasterVerificationMixin, BingMixin, TestCase):
+    pass
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf)
+class GoogleTest(WebmasterVerificationMixin, GoogleMixin, TestCase):
+    pass
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf)
+class MajesticTest(WebmasterVerificationMixin, MajesticMixin, TestCase):
+    pass
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf)
+class YandexTest(WebmasterVerificationMixin, YandexMixin, TestCase):
+    pass
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf_multi)
+class AlexaMultiTest(WebmasterVerificationMixin, AlexaMixin, TestCase):
+    pass
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf_multi)
+class BingMultiTest(WebmasterVerificationMixin, BingMixin, TestCase):
+    pass
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf_multi)
+class GoogleMultiTest(WebmasterVerificationMixin, GoogleMixin, TestCase):
+    pass
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf_multi)
+class MajesticMultiTest(WebmasterVerificationMixin, MajesticMixin, TestCase):
+    pass
+
+
+@override_settings(WEBMASTER_VERIFICATION=conf_multi)
+class YandexMultiTest(WebmasterVerificationMixin, YandexMixin, TestCase):
+    pass

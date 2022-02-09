@@ -49,5 +49,3 @@ jobs:
     displayName: setup.py install
   - script: python quicktest.py webmaster_verification
     displayName: Run tests
-  - script: python quicktest.py webmaster_verification --multicode
-    displayName: Run multicode tests

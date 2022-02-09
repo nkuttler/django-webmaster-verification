@@ -2,9 +2,8 @@
 Source: http://datadesk.latimes.com/posts/2012/06/test-your-django-app-with-travisci/
 Slightly modified by Nicolas Kuttler.
 """
-
-import os
 import argparse
+import os
 
 from django import setup
 from django.conf import settings
@@ -53,54 +52,34 @@ class QuickDjangoTest(object):
                 }
             },
             INSTALLED_APPS=self.INSTALLED_APPS + tuple(self.apps),
-            WEBMASTER_VERIFICATION=self._get_wv_config(),
             ROOT_URLCONF="test_project.urls",
-            TEMPLATES=[{
-                "BACKEND": "django.template.backends.django.DjangoTemplates",
-                "DIRS": os.path.join(self.DIRNAME, "test_project", "templates",),
-                "OPTIONS": {
-                    "context_processors": (),
-                    "loaders": [
-                        (
-                            "django.template.loaders.cached.Loader",
-                            [
-                                "django.template.loaders.app_directories.Loader",
-                            ],
-                        ),
-                    ],
-                },
-            }],
+            TEMPLATES=[
+                {
+                    "BACKEND": "django.template.backends.django.DjangoTemplates",
+                    "DIRS": os.path.join(
+                        self.DIRNAME,
+                        "test_project",
+                        "templates",
+                    ),
+                    "OPTIONS": {
+                        "context_processors": (),
+                        "loaders": [
+                            (
+                                "django.template.loaders.cached.Loader",
+                                [
+                                    "django.template.loaders.app_directories.Loader",
+                                ],
+                            ),
+                        ],
+                    },
+                }
+            ],
             MIDDLEWARE=[],
         )
 
         # Django 1.8
         setup()
         DiscoverRunner().run_tests(self.apps, verbosity=1)
-
-    def _get_wv_config(self, key="default"):
-        if self.multicode:
-            conf = {
-                "bing": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
-                "google": ("ffffffffffffffff", "aaaaaaaaaaaaaaaa",),
-                "majestic": (
-                    "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
-                    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                ),
-                "yandex": ("f0f0f0f0f0f0f0f0", "1919191919191919",),
-                "alexa": (
-                    "1234567890abcdefABCDEF12345",
-                    "12345abcdef1234567890ABCDEF",
-                ),
-            }
-        else:
-            conf = {
-                "bing": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
-                "google": "ffffffffffffffff",
-                "majestic": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
-                "yandex": "f0f0f0f0f0f0f0f0",
-                "alexa": "12345abcdef1234567890ABCDEF",
-            }
-        return conf
 
 
 if __name__ == "__main__":
